@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -58,9 +59,14 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "GosuManiaProject:build",
+            "proxyConfig": "src/app/databases/proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "oilQuality:build:production"
+              "browserTarget": "oilQuality:build:production",
+              "proxyConfig": "src/app/databases/proxy.conf.json"
             },
             "development": {
               "browserTarget": "oilQuality:build:development"
@@ -87,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,5 +101,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

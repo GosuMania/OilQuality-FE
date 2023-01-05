@@ -1,0 +1,78 @@
+<div class="container" style="padding: 5%">
+  <div class="row">
+    <div class="col" style="text-align: center">
+      <h1>
+        OIL QUALITY & OXIDATION LEVEL
+      </h1>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col" style="text-align: center">
+      <img [src]="'favicon.ico'" width="150">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col" style="text-align: center">
+      <input #fileInput type="file" style="display: none" (change)="onFileChange($event)"/>
+      <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+        <mat-icon>attach_file</mat-icon>
+        SELECT FILE
+      </button>
+    </div>
+  </div>
+  <!--
+  <div class="row" *ngIf="willDownload">
+    <div class="col" style="text-align: center">
+      <pre>{{outputJson | json}}</pre>
+    </div>
+  </div>
+  -->
+  <!-- <div [innerHTML]="outputJson"></div>-->
+  <br>
+  <div class="row" *ngIf="file">
+    <div class="col" style="text-align: center">
+      File seletcted: {{file?.name}}
+    </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="showButtonEvaluate">
+    <div class="col" style="text-align: center">
+      <button mat-raised-button color="accent" class="file-select-button" (click)="onUploadClick()">
+        <mat-icon>file_upload</mat-icon>
+        EVALUATE
+      </button>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="row" *ngIf="oilResult.setted">
+    <div class="col" style="text-align: center">
+      <h2> RESULT </h2>
+      <p>
+        <strong>Oil rating: </strong>
+        <a *ngIf="oilResult.rating == 0" style="color: green">
+          GOOD
+        </a>
+        <a *ngIf="oilResult.rating == 1" style="color: orange">
+          FAIR
+        </a>
+        <a *ngIf="oilResult.rating == 2" style="color: red">
+          VERY BAD
+        </a>
+        <br>
+        <strong>Probability: </strong> {{oilResult.probability | number:'1.2-2'}}%
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="my-overlay" *ngIf="loading">
+  <div class="row" style="display: flex; justify-content: center;">
+    <div class="col">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
